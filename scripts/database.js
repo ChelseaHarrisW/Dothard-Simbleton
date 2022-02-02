@@ -141,7 +141,23 @@ const businesses = [
     }
   ]
 
-  export const getBuisness = () => {
-    const copyOfData = buisness.map(orderData => ({...orderData}))
+  export const getClients = () => {
+    const copyOfData = businesses.map(item => ({...item}))
     return copyOfData
+}
+export const filteredClients = (state) => {
+  const nyClients = businesses.filter(variable => variable.addressStateCode === state)
+  return nyClients
+}
+
+
+
+export const filteredManufacturingBusinesses = () => {
+  const manBusiness = businesses.filter(variable => variable.companyIndustry === "Manufacturing")
+  return manBusiness
+}
+
+export const filteredAgents = () => {
+  const agents = businesses.map(agent => {return {agentName: `${agent.purchasingAgent.nameLast} ${agent.purchasingAgent.nameFirst}`,agentCompany: agent.companyName,agentPhone: agent.phoneWork}})
+  return agents
 }
